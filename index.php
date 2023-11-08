@@ -8,21 +8,20 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https://https://mill3.studio/
+ * @link              https://github.com/Mill3/Mill3-Theme-Dev-Mode/
  * @since             1.0.0
  * @package           Mill3_Theme_Dev_Mode
  *
  * @wordpress-plugin
  * Plugin Name:       Mill3 Theme Dev Mode 🔒
- * Plugin URI:        https://https://mill3.studio/
+ * Plugin URI:        https://github.com/Mill3/Mill3-Theme-Dev-Mode/
  * Description:       This plugin prevent non-connected admin users to visit the public site.
  * Version:           1.0.0
  * Author:            Mill3 Studio
- * Author URI:        https://https://mill3.studio//
+ * Author URI:        https://mill3.studio//
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       mill3-theme-dev-mode
- * Domain Path:       /languages
  */
 
 // If this file is called directly, abort.
