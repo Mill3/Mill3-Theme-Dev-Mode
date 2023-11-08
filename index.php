@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Mill3 Theme Dev Mode 🔒
  * Plugin URI:        https://github.com/Mill3/Mill3-Theme-Dev-Mode/
- * Description:       This plugin prevent non-connected admin users to visit the public site.
+ * Description:       This plugin prevent non-connected admin users to visit the public site, also prevents robots indexing.
  * Version:           1.0.0
  * Author:            Mill3 Studio
  * Author URI:        https://mill3.studio//
@@ -54,7 +54,7 @@ function run_mill3_theme_dev_mode() {
 
   // if user is not logged in, display a message and die
   if( !$user ) {
-    echo <<<HEREDOC
+    $body = <<<HEREDOC_BODY
       <!DOCTYPE html>
       <html lang="en">
       <head>
@@ -63,8 +63,9 @@ function run_mill3_theme_dev_mode() {
         <title>MILL3</title>
         <style>
         body {
-          padding: 1em;
-          font-size: 3em;
+          padding: 0.25em;
+          font-size: 2.5em;
+          text-align: center;
           font-family: Helvetica; sans-serif;
           background-color: #000;
           color: #fff;
@@ -78,8 +79,8 @@ function run_mill3_theme_dev_mode() {
         <h1>MILL3 🔒</h1>
       </body>
       </html>
-    HEREDOC;
-    die();
+    HEREDOC_BODY;
+    exit($body);
   }
 }
 
