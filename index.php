@@ -58,6 +58,5 @@ function run_mill3_theme_dev_mode() {
   }
 }
 
-// run_mill3_theme_dev_mode();
-
+// run the function when the user is set, this allow to capture current connected user
 add_action( 'set_current_user', 'run_mill3_theme_dev_mode', 1);
