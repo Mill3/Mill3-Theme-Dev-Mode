@@ -47,13 +47,39 @@ function run_mill3_theme_dev_mode() {
   // if user is logged in or at login page, do nothing
   if( is_admin() || $GLOBALS['pagenow'] == 'wp-login.php' ) return;
 
+  // if function does not exist, do nothing, prevent error if called using an early hook
+  if( !function_exists("get_current_user_id") ) return;
+
   // get current user
-  $user = get_current_user_id();;
+  $user = get_current_user_id();
 
   // if user is not logged in, display a message and die
   if( !$user ) {
-    echo "<style>body { font-size: 3em; font-family: Helvetica; sans-serif; background-color: #000; color: #fff; }</style>";
-    echo "<h1>MILL3 🔒</h1>";
+    echo <<<HEREDOC
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MILL3</title>
+        <style>
+        body {
+          padding: 1em;
+          font-size: 3em;
+          font-family: Helvetica; sans-serif;
+          background-color: #000;
+          color: #fff;
+        }
+        h1 {
+          margin: 0;
+        }
+        </style>
+      </head>
+      <body>
+        <h1>MILL3 🔒</h1>
+      </body>
+      </html>
+    HEREDOC;
     die();
   }
 }
