@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              https://github.com/Mill3/Mill3-Theme-Dev-Mode/
- * @since             1.0.0
+ * @since             1.0.1
  * @package           Mill3_Theme_Dev_Mode
  *
  * @wordpress-plugin
  * Plugin Name:       Mill3 Theme Dev Mode 🔒
  * Plugin URI:        https://github.com/Mill3/Mill3-Theme-Dev-Mode/
  * Description:       This plugin prevent non-connected admin users to visit the public site, also prevents robots indexing.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Mill3 Studio
  * Author URI:        https://mill3.studio//
  * License:           GPL-2.0+
@@ -34,7 +34,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'MILL3_THEME_DEV_MODE_VERSION', '1.0.0' );
+define( 'MILL3_THEME_DEV_MODE_VERSION', '1.0.1' );
 
 /**
  * Begins execution of the plugin.
@@ -43,6 +43,9 @@ define( 'MILL3_THEME_DEV_MODE_VERSION', '1.0.0' );
  *
  */
 function run_mill3_theme_dev_mode() {
+  // if is a CLI command, do nothing
+  if( defined('WP_CLI') && WP_CLI ) return;
+
   // if user is logged in or at login page, do nothing
   if( is_admin() || $GLOBALS['pagenow'] == 'wp-login.php' ) return;
 
@@ -84,5 +87,5 @@ function run_mill3_theme_dev_mode() {
   }
 }
 
-// run the function when the user is set, this allow to capture current connected user
-add_action( 'set_current_user', 'run_mill3_theme_dev_mode', 1);
+// run the function when the user is set
+add_action( 'set_current_user', 'run_mill3_theme_dev_mode');
